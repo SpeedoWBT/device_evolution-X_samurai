@@ -1,0 +1,14 @@
+# Cryptoeng
+attribute hal_cryptoeng;
+attribute hal_cryptoeng_client;
+attribute hal_cryptoeng_server;
+
+# Engsensor
+attribute hal_engsensor;
+attribute hal_engsensor_client;
+attribute hal_engsensor_server;
+
+# Syshelper
+attribute hal_syshelper;
+attribute hal_syshelper_client;
+attribute hal_syshelper_server;

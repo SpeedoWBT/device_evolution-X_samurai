@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The number of vibration intensity levels supported by the device.
+         Note that this should correspond to the ability to vary the vibration amplitude, with
+         enough dynamic range to have at least as many distinct intensity levels as defined here.
+         Supported values are 1, 2, 3. If '1', the settings app will use a toggle for the settings,
+         otherwise a slider. If '3', the settings app maps intensities directly to the levels
+         supported by the Vibrator HAL APIs. If '2', then the levels will be mapped to
+         VIBRATION_INTENSITY_LOW and VIBRATION_INTENSITY_HIGH, which gives the most range for
+         scaling vibrations. The medium intensity will be skipped.
+         The default intensity values are configured at
+         frameworks/base/core/res/res/values/config.xml's config_default[type]VibrationIntensity.
+         Make sure that each default intensity value is consistent with the supported levels set
+         here. If this settings supports only 2 levels, for example, then the default intensity
+         should be either LOW (1) or HIGH (3).
+    -->
+    <integer name="config_vibration_supported_intensity_levels">3</integer>
+
+    <!-- PEX Maintainer -->
+    <string name="pex_maintainer_name" translatable="false">SpeedoWBT</string>
+	
+	    <!-- About device screen, build maintainer -->
+<!--<string name="build_device_url" translatable="false">https://t.me/EvolutionX</string> -->
+    <string name="build_maintainer">Build maintainer</string>
+    <string name="build_maintainer_summary" translatable="false">SpeedoWBT</string>
+<!--    <string name="build_maintainer_donate_url" translatable="false">https://linktr.ee/Shaughzam</string> -->
+	
+	<!-- Whether to show min refresh rate in display settings -->
+    <bool name="config_show_min_refresh_rate_switch">true</bool>
+
+    <!-- Whether to show min/max refresh rate in display settings -->
+    <bool name="config_show_refresh_rate_controls">true</bool>
+    <bool name="config_supports_dynamic_refresh_rate_controls">true</bool>
+	
+	<!-- Refresh rate -->
+    <string name="min_refresh_rate_title">Minimum refresh rate</string>
+    <string name="max_refresh_rate_title">Maximum refresh rate</string>
+    <string name="low_power_refresh_rate_title_custom">Low power refresh rate</string>
+
+    <!-- Whether to enable Lineage Fast Charge Prefernece -->
+    <bool name="config_lineageFastChargeSupported">true</bool>
+	
+    <!-- Battery Health -->
+    <bool name="config_supportBatteryHealth">true</bool>
+    <string name="config_batCurCap"></string>
+    <string name="config_batDesCap"></string>
+    <string name="config_batChargeCycle"></string>
+	
+    <!-- FastCharge feature -->
+    <string name="fast_charging_title">Fast charging</string>
+    <string name="fast_charging_summary">Disable to reduce the heat produced by the device while charging or to extend the lifespan of the battery</string>
+	<!-- Smart charging -->
+    <string name="smart_charging_title">Smart Charging</string>
+    <string name="smart_charging_summary">Set maximum charging level</string>
+    <string name="smart_charging_main_switch_title">Use Smart Charging</string>
+    <string name="smart_charging_level_title">Stop trigger level</string>
+    <string name="smart_charging_resume_level_title">Start trigger level</string>
+    <string name="smart_charging_reset_stats_title">Reset battery statistics</string>
+    <string name="smart_charging_reset_stats_summary">Reset battery statistics after reaching user-defined charging level</string>
+    <string name="smart_charging_intro_text">Smart Charging allows you to set a maximum charging level to extend the lifespan of your battery</string>
+
+ <!-- Ambient wake toggles -->
+    <string name="doze_gesture_ambient_title">Show Ambient</string>
+    <string name="doze_gesture_ambient_summary">Show Ambient Display instead of fully waking the screen up</string>
+	 <!-- Doze on double tap -->
+    <string name="double_tap_title">Double tap</string>
+    <string name="doze_double_tap_title">Double tap to check phone</string>
+    <string name="doze_double_tap_summary">Pulse notifications by a double tap</string>
+	
+</resources>
+			
+    <!-- AOD doze -->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:key="display_settings_screen"
+    android:title="@string/display_settings"
+    settings:keywords="@string/keywords_display">
+
+    <PreferenceCategory
+        android:title="@string/category_name_brightness">
+
+        <com.android.settingslib.RestrictedPreference
+            android:key="brightness"
+            android:title="@string/brightness"
+            settings:keywords="@string/keywords_display_brightness_level"
+            settings:useAdminDisabledSummary="true"
+            settings:userRestriction="no_config_brightness" />
+
+        <com.android.settings.display.AutoBrightnessPreference
+            android:fragment="com.android.settings.display.AutoBrightnessSettings"
+            android:key="auto_brightness_entry"
+            android:title="@string/auto_brightness_title"
+            settings:controller="com.android.settings.display.AutoBrightnessPreferenceController"
+            settings:useAdminDisabledSummary="true"
+            settings:userRestriction="no_config_brightness" />
+
+        <com.android.settingslib.PrimarySwitchPreference
+            android:key="reduce_bright_colors_preference"
+            android:title="@string/reduce_bright_colors_preference_title"
+            settings:keywords="@string/keywords_reduce_bright_colors"
+            android:persistent="false"
+            android:fragment="com.android.settings.accessibility.ToggleReduceBrightColorsPreferenceFragment"
+            settings:controller="com.android.settings.accessibility.ReduceBrightColorsPreferenceController" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_name_lock_display">
+
+        <Preference
+            android:fragment="com.android.settings.security.LockscreenDashboardFragment"
+            android:key="lockscreen_from_display_settings"
+            android:title="@string/lockscreen_settings_title"
+            settings:controller="com.android.settings.security.screenlock.LockScreenPreferenceController"
+            settings:keywords="@string/keywords_ambient_display_screen" />
+
+        <com.android.settingslib.RestrictedPreference
+            android:fragment="com.android.settings.display.ScreenTimeoutSettings"
+            android:key="screen_timeout"
+            android:summary="@string/summary_placeholder"
+            android:title="@string/screen_timeout"
+            settings:controller="com.android.settings.display.ScreenTimeoutPreferenceController" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_name_appearance">
+
+        <com.android.settings.display.darkmode.DarkModePreference
+            android:fragment="com.android.settings.display.darkmode.DarkModeSettingsFragment"
+            android:key="dark_ui_mode"
+            android:title="@string/dark_ui_mode"
+            android:widgetLayout="@null"
+            settings:controller="com.android.settings.display.DarkUIPreferenceController"
+            settings:keywords="@string/keywords_dark_ui_mode"
+            settings:widgetLayout="@null" />
+
+        <Preference
+            android:fragment="com.android.settings.dream.DreamSettings"
+            android:key="screensaver"
+            android:title="@string/screensaver_settings_title"
+            settings:controller="com.android.settings.display.ScreenSaverPreferenceController"
+            settings:keywords="@string/keywords_screensaver" />
+
+        <Preference
+            android:fragment="com.android.settings.accessibility.TextReadingPreferenceFragment"
+            android:key="text_reading_options"
+            android:persistent="false"
+            android:title="@string/accessibility_text_reading_options_title"
+            android:summary="@string/accessibility_text_reading_options_translatable_summary"
+            settings:controller="com.android.settings.accessibility.TextReadingFragmentForDisplaySettingsController" />
+
+        <com.android.settings.display.DensityPreference
+            android:key="density"
+            android:title="@string/developer_smallest_width" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_name_color">
+
+        <com.android.settingslib.PrimarySwitchPreference
+            android:fragment="com.android.settings.display.NightDisplaySettings"
+            android:key="night_display"
+            android:title="@string/night_display_title"
+            settings:controller="com.android.settings.display.NightDisplayPreferenceController"
+            settings:keywords="@string/keywords_display_night_display" />
+
+        <Preference
+            android:key="livedisplay"
+            android:title="@*android:string/live_display_title"
+            android:summary="@string/live_display_summary"
+            settings:controller="com.android.settings.livedisplay.LiveDisplayPreferenceController">
+            <intent android:action="com.android.settings.LIVEDISPLAY_SETTINGS" />
+        </Preference>
+
+        <Preference
+            android:fragment="com.android.settings.display.ColorModePreferenceFragment"
+            android:key="color_mode"
+            android:title="@string/color_mode_title"
+            settings:controller="com.android.settings.display.ColorModePreferenceController"
+            settings:keywords="@string/keywords_color_mode" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_name_display_controls">
+
+        <SwitchPreference
+            android:key="enable_blurs_on_windows"
+            android:title="@string/window_blurs"/>
+
+        <com.android.settingslib.PrimarySwitchPreference
+            android:fragment="com.android.settings.display.SmartAutoRotatePreferenceFragment"
+            android:key="auto_rotate"
+            android:title="@string/accelerometer_title"
+            settings:controller="com.android.settings.display.SmartAutoRotatePreferenceController"
+            settings:keywords="@string/keywords_auto_rotate" />
+
+        <Preference
+            android:fragment="com.android.settings.display.SmartAutoRotatePreferenceFragment"
+            android:key="device_state_auto_rotate"
+            android:title="@string/accelerometer_title"
+            settings:controller="com.android.settings.display.DeviceStateAutoRotateOverviewController"
+            settings:keywords="@string/keywords_auto_rotate" />
+
+        <Preference
+            android:fragment="com.android.settings.display.ScreenResolutionFragment"
+            android:key="screen_resolution"
+            android:title="@string/screen_resolution_title"
+            settings:controller="com.android.settings.display.ScreenResolutionController"
+            settings:keywords="@string/keywords_screen_resolution" />
+
+        <ListPreference
+            android:key="custom_screen_resolution"
+            android:summary="@string/summary_placeholder"
+            android:title="@string/custom_screen_resolution_title"
+            settings:controller="com.android.settings.display.CustomScreenResolutionController"/>
+
+        <com.android.settings.display.DcDimmingPreference
+            android:fragment="com.android.settings.display.DcDimmingSettings"
+            android:key="dc_dimming"
+            android:title="@string/dc_dimming_title"
+            android:widgetLayout="@null"
+            settings:widgetLayout="@null"
+            settings:keywords="@string/keywords_display_dc_dimming"/>
+
+        <SwitchPreference
+            android:key="display_white_balance"
+            android:summary="@string/display_white_balance_summary"
+            android:title="@string/display_white_balance_title"
+            settings:controller="com.android.settings.display.DisplayWhiteBalancePreferenceController" />
+
+        <ListPreference
+            android:key="min_refresh_rate"
+            android:title="@string/min_refresh_rate_title"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.display.MinRefreshRatePreferenceController" />
+
+        <ListPreference
+            android:key="max_refresh_rate"
+            android:title="@string/max_refresh_rate_title"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.display.MaxRefreshRatePreferenceController"/>
+
+        <SwitchPreference
+            android:key="peak_refresh_rate"
+            android:summary="@string/peak_refresh_rate_summary"
+            android:title="@string/peak_refresh_rate_title"
+            settings:controller="com.android.settings.display.PeakRefreshRatePreferenceController" />
+
+        <ListPreference
+            android:key="low_power_refresh_rate"
+            android:title="@string/low_power_refresh_rate_title_custom"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.display.LowPowerRefreshRatePreferenceController" />
+
+        <SwitchPreference
+            android:key="touch_sensitivity"
+            android:summary="@string/touch_sensitivity_summary"
+            android:title="@string/touch_sensitivity_title"
+            settings:controller="com.google.android.settings.touch.TouchSensitivityPreferenceController"
+            settings:keywords="@string/keywords_touch_sensitivity" />
+
+        <SwitchPreference
+            android:key="show_operator_name"
+            android:summary="@string/show_operator_name_summary"
+            android:title="@string/show_operator_name_title" />
+
+        <SwitchPreference
+            android:key="camera_gesture"
+            android:summary="@string/camera_gesture_desc"
+            android:title="@string/camera_gesture_title" />
+
+        <SwitchPreference
+            android:key="lift_to_wake"
+            android:title="@string/lift_to_wake_title" />
+
+        <SwitchPreference
+            android:key="tap_to_wake"
+            android:summary="@string/tap_to_wake_summary"
+            android:title="@string/tap_to_wake" />
+	<!-- Mods from Evox -->
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="proximity_on_wake"
+            android:title="@string/proximity_wake_title"
+            android:summary="@string/proximity_wake_summary"
+            android:defaultValue="@*android:bool/config_proximityCheckOnWakeEnabledByDefault" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wake_when_plugged_or_unplugged_title"
+            android:summary="@string/wake_when_plugged_or_unplugged_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="display_cutout_force_fullscreen_settings"
+            android:title="@string/display_cutout_force_fullscreen_title"
+            android:summary="@string/display_cutout_force_fullscreen_summary"
+            android:fragment="com.android.settings.display.DisplayCutoutForceFullscreenSettings"
+            settings:controller="com.android.settings.display.DisplayCutoutForceFullscreenPreferenceController" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="high_touch_polling_rate_enable"
+            android:title="@string/high_touch_polling_rate_title"
+            android:summary="@string/high_touch_polling_rate_summary"
+            android:defaultValue="false"
+            settings:controller="com.android.settings.touch.HighTouchPollingRateSettingsPreferenceController" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="high_touch_sensitivity_enable"
+            android:title="@string/high_touch_sensitivity_title"
+            android:summary="@string/high_touch_sensitivity_summary"
+            android:defaultValue="false"
+            settings:controller="com.android.settings.touch.HighTouchSensitivitySettingsPreferenceController" />
+
+        <ListPreference
+            android:key="theme"
+            android:summary="@string/summary_placeholder"
+            android:title="@string/device_theme" />
+
+        <Preference
+            android:fragment="com.android.settings.display.VrDisplayPreferencePicker"
+            android:key="vr_display_pref"
+            android:title="@string/display_vr_pref_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+	
+

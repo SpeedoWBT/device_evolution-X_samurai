@@ -25,5 +25,5 @@ Front Camera | 16MP (wide)
 
 ## Device picture
 
-![realme X2 Pro](https://www.mediafire.com/view/g4fpm8qj0ebjzfw/Realme_X2pro.jpg/file)
+![realme X2 Pro](https://www.mediafire.com/view/g4fpm8qj0ebjzfw/Realme_X2pro.jpg)
 

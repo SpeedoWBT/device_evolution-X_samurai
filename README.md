@@ -23,7 +23,4 @@ Display | 1080 x 2400 pixels, 20:9 ratio, 6.5 inches, Super AMOLED (~402 ppi den
 Rear Camera  | 64MP (wide) / 13MP (telephoto) / 8MP (ultrawide) / 2MP (depth)
 Front Camera | 16MP (wide)
 
-## Device picture
-
-![realme X2 Pro](https://www.mediafire.com/view/g4fpm8qj0ebjzfw/Realme_X2pro.jpg)
 

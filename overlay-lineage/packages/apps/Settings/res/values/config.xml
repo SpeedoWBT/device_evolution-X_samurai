@@ -28,18 +28,4 @@
     <!-- Whether to show min refresh rate in display settings -->
     <bool name="config_show_min_refresh_rate_switch">true</bool>
 	
-	
-	
-	<!-- Battery health -->
-    <string name="config_batteryHealthNode"></string>
-    <string name="config_batteryRemainingCapacityNode"></string>
-    <string name="config_batteryDesignCapacityNode"></string>
-    <bool name="config_showBatteryChargeCycles">true</bool>
-
-    <!-- Whether to show custom screen resolution settings -->
-    <bool name="config_show_custom_screen_resolution_switch">true</bool>
-
-    <!-- Whether device supports increased touch sensitvity -->
-    <bool name="config_supportTouchPollingMode">true</bool>
-	
 </resources>

@@ -3,7 +3,8 @@ Copyright (C) 2020 The LineageOS Project
 Device configuration for realme X2 Pro
 =========================================
 
-The realme X2 Pro (codenamed _"samurai"_) is a high-end smartphone from realme.
+The realme X2 Pro (codenamed _"RMX1931" then "samurai"_)
+is a high-end smartphone from realme.
 
 It was announced & released in October 2019.
 
@@ -23,4 +24,6 @@ Rear Camera  | 64MP (wide) / 13MP (telephoto) / 8MP (ultrawide) / 2MP (depth)
 Front Camera | 16MP (wide)
 
 ## Device picture
-![realme X2 Pro](https://image01.realme.net/general/20191112/1573530955589.jpg "realme X2 Pro in lunar white")
+
+![realme X2 Pro]( https://www.mediafire.com/view/g4fpm8qj0ebjzfw/Realme_X2pro.jpg)
+

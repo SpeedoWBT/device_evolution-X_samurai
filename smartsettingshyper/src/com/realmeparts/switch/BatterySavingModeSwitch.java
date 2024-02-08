@@ -44,13 +44,14 @@ public class BatterySavingModeSwitch implements OnPreferenceChangeListener {
         if (isCurrentlyEnabled(mContext)) {
             Toast.makeText(mContext, "Set BatterySavingMode.", Toast.LENGTH_SHORT).show();
         } else
-            Toast.makeText(mContext, "Set BatterySavingMode.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Stop BatterySavingMode.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Boolean enabled = (Boolean) newValue;
         DeviceSettings.mGameModeSwitch.setEnabled(!enabled);
+        DeviceSettings.mDNDSwitch.setEnabled(!enabled);
         SystemProperties.set("perf_profile", enabled ? "2" : "0");
         ShowToast();
         return true;

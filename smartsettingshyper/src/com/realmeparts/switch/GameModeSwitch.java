@@ -19,6 +19,11 @@ package com.realmeparts;
 
 import android.app.NotificationManager;
 import android.content.Context;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.util.Log;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.SystemProperties;
@@ -100,7 +105,7 @@ public class GameModeSwitch implements OnPreferenceChangeListener {
         Utils.writeValue(DeviceSettings.TP_LIMIT_ENABLE, enabled ? "0" : "1");
         Utils.writeValue(DeviceSettings.TP_DIRECTION, enabled ? "1" : "0");
         SystemProperties.set("perf_profile", enabled ? "1" : "0");
-		DeviceSettings.mBatterySavingModeSwitch.setEnabled(!enabled);
+	DeviceSettings.mBatterySavingModeSwitch.setEnabled(!enabled);
         GameModeDND();
         return true;
     }
